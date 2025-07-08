@@ -1,13 +1,32 @@
 import streamlit as st
 from openai import OpenAI
 import fitz 
+from htmlTemplates import css
 
 # Show title and description.
-st.title("📄 Document question answering")
-st.write(
-    "Upload a document below and ask a question about it – GPT will answer! "
-    "To use this app, you need to provide an OpenAI API key, which you can get [here](https://platform.openai.com/account/api-keys). "
+uah_logo_url = "https://www.uah.edu/images/administrative/communications/logo/uah-logo.svg"
+
+st.markdown("""
+    <style>
+        html, body, [class*="css"]  {
+            font-size: 20px !important;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
+# Create two columns: one for the logo, one for the title
+col1, col2 = st.columns([1, 6])  # Adjust ratio to size preference
+
+with col1:
+    st.image(uah_logo_url, width=100)
+with col2:
+    st.title("GenCyber Assistant")
+st.markdown(
+    "Please feel free to ask any questions about the cyber security related questions. "
+    "I will provide topic-related or factual answers."
 )
+st.write(css, unsafe_allow_html=True)
+
 
 # Ask user for their OpenAI API key via `st.text_input`.
 # Alternatively, you can store the API key in `./.streamlit/secrets.toml` and access it
@@ -26,7 +45,7 @@ else:
     # )
     
     # Path to your local PDF file
-    pdf_path = "./bill of rights.pdf"
+    pdf_path = "./CSResource.pdf"
 
     # Read the PDF
     with fitz.open(pdf_path) as doc:
@@ -36,13 +55,12 @@ else:
 
     # Ask the user for a question via `st.text_area`.
     question = st.text_area(
-        "Now ask a question about the document!",
-        placeholder="Can you give me a short summary?",
+        "Now ask a question about cybersecurity!",
+        placeholder="Type your question here...",
         # disabled=not uploaded_file,
     )
 
     if question:
-
         # Process the uploaded file and question.
         # document = uploaded_file.read().decode()
         # with fitz.open(stream=uploaded_file.read(), filetype="pdf") as doc:
