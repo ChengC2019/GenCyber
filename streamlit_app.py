@@ -11,6 +11,7 @@ st.markdown("""
         html, body, [class*="css"]  {
             font-size: 20px !important;
         }
+
     </style>
 """, unsafe_allow_html=True)
 
@@ -18,12 +19,11 @@ st.markdown("""
 col1, col2 = st.columns([1, 6])  # Adjust ratio to size preference
 
 with col1:
-    st.image(uah_logo_url, width=100)
+    st.image(uah_logo_url, width=300)
 with col2:
-    st.title("GenCyber Assistant")
+    st.title("GenCyber Assistant:")
 st.markdown(
-    "Please feel free to ask any questions about the cyber security related questions. "
-    "I will provide topic-related or factual answers."
+    "Please feel free to ask any cybersecurity-related questions, I will provide topic-related or factual answers."
 )
 st.write(css, unsafe_allow_html=True)
 
