@@ -45,7 +45,7 @@ else:
     # )
     
     # Path to your local PDF file
-    pdf_path = "./CSResource.pdf"
+    pdf_path = "./CSResource2.pdf"
 
     # Read the PDF
     with fitz.open(pdf_path) as doc:
