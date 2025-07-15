@@ -54,7 +54,7 @@ else:
             document += page.get_text()
 
     # Ask the user for a question via `st.text_area`.
-    question = st.text_area(
+    question = st.text_input(
         "Now ask a question about cybersecurity!",
         placeholder="Type your question here...",
         # disabled=not uploaded_file,
