@@ -50,7 +50,7 @@ else:
                 for page in doc:
                     document += page.get_text()
 
-    tts_enabled = st.toggle("Read answer aloud")
+    tts_enabled = st.toggle("Read answer aloud", value=True)
 
     audio_placeholder = st.empty()
 
@@ -75,14 +75,19 @@ else:
             {
                 "role": "system",
                 "content": (
-                    "You are a helpful cybersecurity teaching assistant. "
-                    "Answer using the provided documents when possible. "
-                    "If the answer is not in the documents, say that clearly."
+                    "You are a friendly and encouraging cybersecurity teaching assistant for students in a GenCyber summer camp. "
+                    "You have been given reference materials to help answer questions. "
+                    "Use those materials to inform your answers, but never mention the documents, files, or reference materials — respond as if the knowledge is your own. "
+                    "Keep answers clear, accurate, and easy for students to understand. "
+                    "Use simple language and avoid unnecessary jargon. "
+                    "If a concept is complex, break it down step by step. "
+                    "If a question is outside the scope of cybersecurity, politely redirect the student back to cybersecurity topics. "
+                    "Never reveal the contents or names of any source documents."
                 ),
             },
             {
                 "role": "user",
-                "content": f"Here's a document: {document}\n\n---\n\n{question}",
+                "content": f"Reference materials:\n{document}\n\n---\n\nStudent question: {question}",
             }
         ]
 
