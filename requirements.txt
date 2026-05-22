@@ -3,3 +3,4 @@ openai
 pymupdf
 fastapi
 uvicorn
+edge-tts
